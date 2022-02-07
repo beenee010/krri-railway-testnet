@@ -33,10 +33,4 @@ COPY ./genesis.json /home/DATA_STORE
 
 # Adding repositories and keys
 
-
-RUN useradd -ms /bin/bash -l -u $uid ether
 RUN apt-get update -y
-
-WORKDIR /home/ether
-
-USER ether
