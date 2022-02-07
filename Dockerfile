@@ -17,9 +17,10 @@ RUN apt-get update -y && apt-get install -y \
         wget \
         build-essential \
         libgmp3-dev
+RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:longsleep/golang-backports
 RUN apt update
-RUN apt install golang-go
+RUN apt install -y golang-go
 RUN git clone https://github.com/ethereum/go-ethereum.git
 WORKDIR /home/ether/go-ethereum
 RUN cd /home/ether/go-ethereum
