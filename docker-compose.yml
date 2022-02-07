@@ -1,0 +1,58 @@
+version: '2'
+
+services:
+    ether.node1.com:
+        image: 'krri-ether-image:latest'
+        tty: true
+        ports:
+            - 8545:8545
+            - 30305:30305
+        environment:
+            ENV: ETHERNODE1
+            RPCPORT: 8545
+            PORT: 30305
+        container_name: ether.node1.com
+        # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8545 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30305
+        working_dir: /home/DATA_STORE
+
+    ether.node2.com:
+        image: 'krri-ether-image:latest'
+        tty: true
+        ports:
+            - 8546:8546
+            - 30306:30306
+        environment:
+            ENV: ETHERNODE2
+            RPCPORT: 8546
+            PORT: 30306
+        container_name: ether.node2.com
+        # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8546 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30306
+        working_dir: /home/DATA_STORE
+
+    ether.node3.com:
+        image: 'krri-ether-image:latest'
+        tty: true
+        ports:
+            - 8547:8547
+            - 30307:30307
+        environment:
+            ENV: ETHERNODE3
+            RPCPORT: 8547
+            PORT: 30307
+        container_name: ether.node3.com
+        # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8547 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30307
+        working_dir: /home/DATA_STORE
+
+    ether.bootnode.com:
+        image: 'krri-ether-image:latest'
+        tty: true
+        ports:
+            - 8548:8548
+            - 30308:30308
+        environment:
+            ENV: BOOTNODE
+            RPCPORT: 8548
+            PORT: 30308
+        container_name: ether.bootnode.com
+        # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8548 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30308
+        working_dir: /home/DATA_STORE    
