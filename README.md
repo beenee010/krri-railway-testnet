@@ -11,6 +11,48 @@
 이더리움 네트워크 설정
 ```
 
+### Traffic Control (tc)
+!you must use '--cap-add=NET_ADMIN' command when you run your docker image(container).
+```
+apt update
+
+apt install -y iproute2 iputils-ping net-tools iperf
+
+ping [ip-address]
+```
+```
+// 네트워크 딜레이 생성
+tc qdisc add dev eth0 root netem delay 100ms
+    (
+        qdisc: modify the scheduler (aka queuing discipline)
+        add: add a new rule
+        dev enp4s0: rules will be applied on device enp4s0
+        root: modify the outbound traffic scheduler (aka known as the egress qdisc)
+        netem: use the network emulator to emulate a WAN property
+        delay: the network property that is modified
+        200ms: introduce delay of 200 ms
+    )
+tc qdisc del dev eth0 root // 룰 삭제 명령어
+```
+```
+server$ iperf -s
+client$ iperf -c [server-ip]
+
+tc class add dev eth0 parent 1:1 classid 1:11 htb rate 20mbit // (커널 오류) 20mbit 외에 설정 가능
+
+tc qdisc add dev eth0 handle 1: ingress
+tc filter add dev eth0 parent 1: protocol ip prio 50 u32 match ip src 0.0.0.0/0 police rate 1mbit burst 10k drop flowid :1
+tc qdisc add dev eth0 root tbf rate 1mbit latency 25ms burst 10k`
+
+```
+### Netcat (nc)
+```
+apt install -y netcat
+
+client$ nc -vl 44444 > test-file.txt
+server$ nc -N 192.168.0.103 44444 < /home/DATA_STORE/test-transfer.txt
+```
+
 ### node info
 ```
 password: 1234
