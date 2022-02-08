@@ -14,6 +14,7 @@ services:
         container_name: ether.node1.com
         # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8545 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30305
         working_dir: /home/DATA_STORE
+        cap_add: NET_ADMIN 
 
     ether.node2.com:
         image: 'krri-ether-image:latest'
@@ -28,6 +29,7 @@ services:
         container_name: ether.node2.com
         # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8546 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30306
         working_dir: /home/DATA_STORE
+        cap_add: NET_ADMIN 
 
     ether.node3.com:
         image: 'krri-ether-image:latest'
@@ -42,6 +44,7 @@ services:
         container_name: ether.node3.com
         # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8547 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30307
         working_dir: /home/DATA_STORE
+        cap_add: NET_ADMIN 
 
     ether.bootnode.com:
         image: 'krri-ether-image:latest'
@@ -55,4 +58,5 @@ services:
             PORT: 30308
         container_name: ether.bootnode.com
         # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8548 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30308
-        working_dir: /home/DATA_STORE    
+        working_dir: /home/DATA_STORE
+        cap_add: NET_ADMIN    
