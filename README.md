@@ -42,4 +42,7 @@ geth --networkid 7881 --syncmode 'full' --maxpeers 10 --datadir /home/DATA_STORE
 ```
 
 ### Network Structure
+172.20.0.3:8750 - node1
+172.20.0.4:8751 - node2
+172.20.0.5:8752 - node3
 ...
