@@ -16,7 +16,8 @@ RUN apt-get update -y && apt-get install -y \
         git \
         wget \
         build-essential \
-        libgmp3-dev
+        libgmp3-dev \
+        net-tools
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:longsleep/golang-backports
 RUN apt update
@@ -34,3 +35,4 @@ COPY ./genesis.json /home/DATA_STORE
 # Adding repositories and keys
 
 RUN apt-get update -y
+RUN geth --datadir /home/DATA_STORE/node account new --password 1234
