@@ -120,6 +120,12 @@ enode://25d382145db64afcb17a1f0a25be2be0a571cdd9859a7db61a98fd068ed636d2d39c2414
 
 ## KRRI-Testnet
 ```
+Grafana : http://web3examples.com/ethereum/demo/Geth_Prometheus_Grafana.html
+Metamask : http://localhost:8545 || http://127.0.0.1:8545
+Docker Monitoring : https://grafana.com/grafana/dashboards/893
+
+docker run -it -d -p 9090:9090 -e "GETH="http://mygethserverhere.com:8545" hunterlong/gethexporter
+
 bootnode
 sudo add-apt-repository -y ppa:ethereum/ethereum
 sudo apt-get update
@@ -141,4 +147,9 @@ geth --networkid 7881 --syncmode 'full' --maxpeers 10 --datadir /home/DATA_STORE
 node3 : 0xF871bf70442Bb021376e4C208657d069C43707A6
 
 geth --networkid 7881 --syncmode 'full' --maxpeers 10 --datadir /home/DATA_STORE/node3 --http --http.port 8547 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30307 --bootnodes 'enode://f8475dbe03fcbe45b8caec1f69550dbcfd3db670213fab03f9bc417fba389cd38d7b7fdcd0e135f1afdb357f26c345ea0a8a78ed1ad4562c0d2929fa53b95d1c@172.27.0.3:30301' --unlock '0xF871bf70442Bb021376e4C208657d069C43707A6' --password ./password.txt --allow-insecure-unlock --ethstats node3:KRRITEST@localhost:3007 console
+
+
+grafana-node : 0x69E14425722AaAE02D62d602CFEB45EC8cba5714
+
+geth --networkid 7881 --syncmode 'full' --maxpeers 10 --datadir /Users/been/krri-geth/grafana-node --http --http.port 8540 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30300 --bootnodes 'enode://f8475dbe03fcbe45b8caec1f69550dbcfd3db670213fab03f9bc417fba389cd38d7b7fdcd0e135f1afdb357f26c345ea0a8a78ed1ad4562c0d2929fa53b95d1c@localhost:30301' --unlock '0x69E14425722AaAE02D62d602CFEB45EC8cba5714' --password ./password.txt --allow-insecure-unlock console
 ```
