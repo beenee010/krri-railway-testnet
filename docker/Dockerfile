@@ -29,10 +29,12 @@ RUN cd /home/ether/go-ethereum
 RUN make geth
 RUN cp build/bin/geth /usr/local/bin/
 
-WORKDIR /home/DATA_STORE/
-COPY ./genesis.json /home/DATA_STORE
+WORKDIR /home/DATA_STORE/node
+COPY ./genesis.json /home/DATA_STORE/node
+COPY ./password.txt /home/DATA_STORE/node
 
 # Adding repositories and keys
 
 RUN apt-get update -y
-RUN geth --datadir /home/DATA_STORE/node account new --password 1234
+RUN geth --datadir /home/DATA_STORE/node init genesis.json
+# RUN geth --datadir /home/DATA_STORE/node account new --password ./password.txt

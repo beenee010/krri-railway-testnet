@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     eth.node1.com:
-        image: 'krri-ether-image:latest'
+        image: 'krri-image:latest'
         tty: true
         ports:
             - 8545:8545
@@ -14,7 +14,7 @@ services:
             PORT: 30305
             NETPORT: 3005
         container_name: eth.node1.com
-        # command :  /bin/bash -c "geth --datadir /home/DATA_STORE/node1 account new --password 1234"
+        command : geth --datadir /home/DATA_STORE/node account new --password ./password.txt
         working_dir: /home/DATA_STORE
         cap_add: 
           - ALL
@@ -22,7 +22,7 @@ services:
         
 
     eth.node2.com:
-        image: 'krri-ether-image:latest'
+        image: 'krri-image:latest'
         tty: true
         ports:
             - 8546:8546
@@ -41,7 +41,7 @@ services:
         
 
     eth.node3.com:
-        image: 'krri-ether-image:latest'
+        image: 'krri-image:latest'
         tty: true
         ports:
             - 8547:8547
@@ -60,7 +60,7 @@ services:
        
 
     eth.bootnode.com:
-        image: 'krri-ether-image:latest'
+        image: 'krri-image:latest'
         tty: true
         ports:
             - 8541:8541
@@ -76,4 +76,85 @@ services:
         working_dir: /home/DATA_STORE
         cap_add: 
           - ALL
+        
+
+
+# version: '3.9'
+
+# services:
+#     eth.node1.com:
+#         image: 'krri-ether-image:latest'
+#         tty: true
+#         ports:
+#             - 8545:8545
+#             - 30305:30305
+#             - 3005:3005
+#         environment:
+#             ENV: ETHERNODE1
+#             RPCPORT: 8545
+#             PORT: 30305
+#             NETPORT: 3005
+#         container_name: eth.node1.com
+#         command : geth --datadir /home/DATA_STORE/node account new --password ./password.txt
+#         working_dir: /home/DATA_STORE
+#         cap_add: 
+#           - ALL
+        
+        
+
+#     eth.node2.com:
+#         image: 'krri-ether-image:latest'
+#         tty: true
+#         ports:
+#             - 8546:8546
+#             - 30306:30306
+#             - 3006:3006
+#         environment:
+#             ENV: ETHERNODE2
+#             RPCPORT: 8546
+#             PORT: 30306
+#             NETPORT: 3006
+#         container_name: eth.node2.com
+#         # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8546 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30306
+#         working_dir: /home/DATA_STORE
+#         cap_add: 
+#           - ALL
+        
+
+#     eth.node3.com:
+#         image: 'krri-ether-image:latest'
+#         tty: true
+#         ports:
+#             - 8547:8547
+#             - 30307:30307
+#             - 3007:3007
+#         environment:
+#             ENV: ETHERNODE3
+#             RPCPORT: 8547
+#             PORT: 30307
+#             NETPORT: 3007
+#         container_name: eth.node3.com
+#         # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8547 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30307
+#         working_dir: /home/DATA_STORE
+#         cap_add: 
+#           - ALL
+       
+
+#     eth.bootnode.com:
+#         image: 'krri-ether-image:latest'
+#         tty: true
+#         ports:
+#             - 8541:8541
+#             - 30301:30301
+#             - 3001:3001
+#         environment:
+#             ENV: BOOTNODE
+#             RPCPORT: 8541
+#             PORT: 30301
+#             NETPORT: 3001
+#         container_name: eth.bootnode.com
+#         # command :  geth --networkid 7881 --maxpeers 10 --datadir /home/DATA_STORE --http.port 8548 --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30308
+#         working_dir: /home/DATA_STORE
+#         cap_add: 
+#           - ALL
         
