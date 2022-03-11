@@ -14,7 +14,7 @@ services:
             PORT: 30305
             NETPORT: 3005
         container_name: eth.node1.com
-        command : geth --datadir /home/DATA_STORE/node account new --password ./password.txt
+        # command : geth --datadir /home/DATA_STORE/node account new --password ./password.txt
         working_dir: /home/DATA_STORE
         cap_add: 
           - ALL
