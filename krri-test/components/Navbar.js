@@ -1,6 +1,7 @@
 // import style from ''
 import Image from 'next/image'
 import avatar from '../temp/avatar.png'
+import { BsPerson } from 'react-icons/bs'
 
 const style= {
     wrapper: `h-16 w-full bg-black text-white flex md:justify-around items-center px-60`,
@@ -14,12 +15,12 @@ const style= {
     loginText: `ml-2`
 }
 
-const currentAccount = '0x62e0dCdf086999Dd6709d4EEA938A3cfdC2435B6'
+const currentAccount = ''
 
 const Navbar = () => {
     return <div className={style.wrapper}>
         <div className={style.leftMenu}>
-            <div className={style.logo}>Uber</div>
+            <div className={style.logo}>KRRI</div>
             <div className={style.menuItem}>menu1</div>
             <div className={style.menuItem}>menu2</div>
             <div className={style.menuItem}>menu3</div>
@@ -34,7 +35,10 @@ const Navbar = () => {
                 <div>
                     {currentAccount.slice(0,6)}...{currentAccount.slice(39)}
                     </div>):(
-                        <div>please log in</div>
+                        <div className={style.loginButton}>
+                            <BsPerson />
+                            <span className={style.loginText}>Login</span>
+                        </div>
                     )}
         </div>
     </div>
